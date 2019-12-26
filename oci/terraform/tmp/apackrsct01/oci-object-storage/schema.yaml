@@ -1,0 +1,49 @@
+title: "Three-tier web application using Always Free resources"
+description: "A demo eCommerce example app using Always Free Oracle Cloud Infrastructure"
+schemaVersion: 1.1.0
+version: "20190304"
+locale: "en"
+
+groupings:
+  - title: "General Configuration"
+    visible: false
+    variables:
+    - compartment_ocid
+    - tenancy_ocid
+    - region
+
+  - title: "General Configuration"
+    variables:
+    - availability_domain
+
+variables:
+  compartment_ocid:
+    type: oci:identity:compartment:id
+    # type: string
+    required: true
+    title: "Compartment"
+    description: "The compartment in which to create compute instance(s)"
+
+  availability_domain:
+    type: oci:identity:availabilitydomain:name
+    dependsOn:
+      compartmentId: ${compartment_ocid}
+    required: true
+    default: 1
+    title: "Availability Domain"
+    description: "The availability domain in the selected region, where you want to deploy the resources"
+
+outputs:
+
+  dev:
+    type: string
+    title: "Message"
+    displayText: "Made by Dan"
+    visible: true
+  
+  comments:
+    type: string
+    title: "Comments"
+    displayText: "This object storage is built by Oracle Resource Manager with Terraform"
+    visible: true
+  
