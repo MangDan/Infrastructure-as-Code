@@ -1,8 +1,0 @@
-tenancy_ocid     = "ocid1.tenancy.oc1..aaaaaaaav4pzoywgjsetng4neekf534ulk4tycw3mhfnyulskotpkk6qr4ca"
-compartment_ocid = ""
-user_ocid        = "ocid1.user.oc1..aaaaaaaaubiorgo37ivoh6vjowtojcgopqkn4a3lulg7unlc4ko4o6kwtwnq"
-fingerprint      = "48:1a:98:8c:cd:f6:63:4b:fb:4d:8d:26:44:aa:37:f6"
-private_key_path = "~/.oci/oci_api_key.pem"
-region           = "ap-seoul-1"
-home_region      = "us-ashburn-1"
-ssh_public_key   = "~/.ssh/id_rsa.pub"
