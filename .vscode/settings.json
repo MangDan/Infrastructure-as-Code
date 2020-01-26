@@ -1,0 +1,7 @@
+{
+    "python.formatting.provider": "black",
+    "editor.formatOnPaste": true,
+    "files.associations": {
+        "**/*.yml": "ansible"
+    }
+}

@@ -1,0 +1,10 @@
+LOCATIONR=/Users/DonghuKim/.oci/config
+PROFILE=DEFAULT
+LOCATIONR=/Users/DonghuKim/.oci/config
+PROFILE=DEFAULT
+LOCATIONR=/Users/DonghuKim/.oci/config
+PROFILE=DEFAULT
+LOCATIONR=/Users/DonghuKim/.oci/config
+PROFILE=DEFAULT
+LOCATIONR=/Users/DonghuKim/.oci/config
+PROFILE=DEFAULT
