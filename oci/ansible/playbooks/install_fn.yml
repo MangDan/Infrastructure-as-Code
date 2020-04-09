@@ -7,3 +7,58 @@
 - name: Install fn project
   shell: /home/opc/fn_install.sh
   become: no
+- name: Create .fn/contexts directory
+  file:
+    path: /home/{{ item.os_user }}/.fn/contexts
+    state: directory
+    recurse: yes
+    owner: "{{ item.os_user }}"
+    group: handson
+  with_items: "{{ users }}"
+  tags:
+    - create_oci_dir 
+- name: Delete fn context file
+  file:
+    path: /home/{{ item.os_user }}/.fn/contexts/meetup.yaml
+    state: absent
+  with_items: "{{ users }}"
+- name: Create fn context file
+  file:
+    path: /home/{{ item.os_user }}/.fn/contexts/meetup.yaml
+    state: touch
+    owner: "{{ item.os_user }}"
+    group: handson
+  with_items: "{{ users }}"
+- name: Append fn context
+  blockinfile:
+    path: /home/{{ item.os_user }}/.fn/contexts/meetup.yaml
+    state: present
+    marker: "# fn context"
+    block: |
+      api-url: https://functions.ap-seoul-1.oraclecloud.com
+      oracle.compartment-id: {{ item.tenancy }}
+      oracle.profile: DEFAULT
+      provider: oracle
+      registry: icn.ocir.io/{{ item.tenancy_namespace }}/meetup
+  with_items: "{{ users }}"
+- name: Delete fn config file
+  file:
+    path: /home/{{ item.os_user }}/.fn/config.yaml
+    state: absent
+  with_items: "{{ users }}"
+- name: Create fn config file
+  file:
+    path: /home/{{ item.os_user }}/.fn/config.yaml
+    state: touch
+    owner: "{{ item.os_user }}"
+    group: handson
+  with_items: "{{ users }}"
+- name: Append fn config
+  blockinfile:
+    path: /home/{{ item.os_user }}/.fn/config.yaml
+    state: present
+    marker: "# fn config"
+    block: |
+      cli-version: ""
+      current-context: "meetup"
+  with_items: "{{ users }}"

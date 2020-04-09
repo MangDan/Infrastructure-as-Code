@@ -66,8 +66,8 @@
 - name: Append oci config
   blockinfile:
     path: /home/{{ item.os_user }}/.oci/config
-    marker: "# oci config file"
     state: present
+    marker: "# oci config"
     block: |
       [DEFAULT]
       tenancy={{ item.tenancy }}
